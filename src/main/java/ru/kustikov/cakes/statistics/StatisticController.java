@@ -17,8 +17,8 @@ public class StatisticController {
     private final StatisticService statisticService;
 
     @GetMapping("/get-statistic")
-    public ResponseEntity<List<Statistic>> saveOrder(@RequestParam Integer year,
-                                                     @RequestParam Long userId) {
+    public ResponseEntity<List<Statistic>> getStatistic(@RequestParam Integer year,
+                                                        @RequestParam Long userId) {
         return statisticService.get(year, userId);
     }
 
