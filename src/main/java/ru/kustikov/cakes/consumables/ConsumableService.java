@@ -44,13 +44,13 @@ public class ConsumableService {
         }
     }
 
-    public ResponseEntity<List<Consumable>> update(List<Consumable> consumable) {
+    public ResponseEntity<Consumable> update(Consumable consumable) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<List<Consumable>> requestEntity = new HttpEntity<>(consumable, headers);
+        HttpEntity<Consumable> requestEntity = new HttpEntity<>(consumable, headers);
 
-        ResponseEntity<List<Consumable>> response = restTemplate.exchange(
+        ResponseEntity<Consumable> response = restTemplate.exchange(
                 URL + "/save",
                 HttpMethod.POST,
                 requestEntity,
@@ -75,7 +75,7 @@ public class ConsumableService {
 
         ResponseEntity<Void> response = restTemplate.exchange(
                 URL + "/delete/{consumableId}",
-                HttpMethod.POST,
+                HttpMethod.DELETE,
                 requestEntity,
                 Void.class,
                 consumableId

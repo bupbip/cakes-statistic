@@ -26,7 +26,7 @@ public class ConsumableController {
     }
 
     @PostMapping("/update-consumable")
-    public ResponseEntity<List<Consumable>> update(@RequestBody List<Consumable> consumable) {
+    public ResponseEntity<Consumable> update(@RequestBody Consumable consumable) {
         return consumableService.update(consumable);
     }
 
