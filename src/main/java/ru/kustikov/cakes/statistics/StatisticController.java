@@ -21,5 +21,4 @@ public class StatisticController {
                                                         @RequestParam Long userId) {
         return statisticService.get(year, userId);
     }
-
 }

@@ -19,4 +19,6 @@ public class Statistic {
     private Long expences;
 
     private Long profit;
+
+    private String userEmail;
 }

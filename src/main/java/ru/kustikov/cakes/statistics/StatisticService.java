@@ -9,7 +9,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -41,6 +43,29 @@ public class StatisticService {
         } else {
             log.error("Запрос завершился неудачно. Код ответа: " + response.getStatusCodeValue());
             return ResponseEntity.status(response.getStatusCode()).build();
+        }
+    }
+
+    public List<Statistic> getMonthStatistic(Integer month) {
+        String urlTemplate = UriComponentsBuilder.fromHttpUrl(URL + "/get-month-statistic")
+                .queryParam("month", "{month}")
+                .encode()
+                .toUriString();
+
+        ResponseEntity<List<Statistic>> response = restTemplate.exchange(
+                urlTemplate,
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                },
+                month
+        );
+
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody();
+        } else {
+            log.error("Запрос завершился неудачно. Код ответа: " + response.getStatusCodeValue());
+            return new ArrayList<>();
         }
     }
 
