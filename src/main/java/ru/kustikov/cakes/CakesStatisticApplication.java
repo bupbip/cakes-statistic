@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class CakesStatisticApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CakesStatisticApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CakesStatisticApplication.class, args);
+    }
 
 }
